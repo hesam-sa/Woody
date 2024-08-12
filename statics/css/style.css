@@ -325,6 +325,8 @@
 @media (min-width: 992px) {
     .container.feature {
         max-width: 100% !important;
+        
+        
     }
 
     .feature-text  {
@@ -370,7 +372,7 @@
 }
 
 .portfolio-item .portfolio-overlay {
-    position: absolute;
+    position:absolute;
     display: flex;
     align-items: center;
     justify-content: center;

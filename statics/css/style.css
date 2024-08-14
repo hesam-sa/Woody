@@ -258,10 +258,12 @@
     position: relative;
     display: inline-block;
     padding: 0 60px;
+ 
 }
 
 .section-title.text-start h1 {
     padding-left: 0;
+    
 }
 
 .section-title h1::before,
@@ -272,6 +274,8 @@
     height: 5px;
     bottom: 0;
     background: var(--dark);
+    
+    
 }
 
 .section-title h1::before {
@@ -355,20 +359,28 @@
     cursor: pointer;
     transition: .5s;
     border-bottom: 2px solid transparent;
+    
+    
 }
 
 #portfolio-flters li:hover,
 #portfolio-flters li.active {
     color: var(--primary);
     border-color: var(--primary);
+    
 }
 
 .portfolio-item img {
     transition: .5s;
+    min-height: 410px;
+    
+    
+    
 }
 
 .portfolio-item:hover img {
     transform: scale(1.1);
+   
 }
 
 .portfolio-item .portfolio-overlay {
@@ -382,6 +394,7 @@
     left: 50%;
     background: rgba(53, 53, 53, .7);
     transition: .5s;
+    
 }
 
 .portfolio-item:hover .portfolio-overlay {

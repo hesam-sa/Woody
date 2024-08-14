@@ -5,22 +5,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <title>Woody - Carpenter Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
+</head>
+<style>
+    
+</style>
 
 <body>
+   
 
-    
+
+
+
+
 
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Blog</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Project</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-center" href="{% url 'website:home' %}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-center" href="{% url 'blog:blog' %}">blog</a></li>
-                    <li class="breadcrumb-item"><a class="text-center" href="{% url 'blog:single' %}">single</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Blog</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></li>
                     
                 </ol>
             </nav>
@@ -28,48 +42,51 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- Feature Start -->
-    {% include 'website/details.html' %}
-    <!-- Feature Start -->
 
-    
     <!-- Projects Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="section-title text-center">
-                <h1 class="display-5 mb-5">Our Projects</h1>
+                <h1 class="display-5 mb-5">{{post.title}}</h1>
             </div>
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline mb-5" id="portfolio-flters">
                         
-                        <li class="mx-2" data-filter=".first">General POSTS</li>
+                        <li class="mx-2" data-filter=".first">Single Blog</li>
                        
                     </ul>
                 </div>
             </div>
-            <div class="row g-4 portfolio-container" >
-             
-                <div class="" data-wow-delay="0.5s">
+            <div class="row g-4 portfolio-container">
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
-                        <div class="" style="text-align: center">
-                            <img class="" src="{% static 'img/portfolio-1.jpg' %}" alt="" >
-                            
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{post.image.url}}" alt="" >
+                            <div class="portfolio-overlay">
+                                <a class="btn btn-square btn-outline-light mx-1" href="{{post.image.url}}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1" href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
+                            </div>
                         </div>
-                        <div class="text" style="text-align: center;" href="#">
-                            <p class="" href="#">General Carpentry</p>
-                        </div>
-                        <div class="text" style="text-align: center;">
-                            <p class="" href="#">Wooden Furniture Manufacturing And Remodeling</p>
+                        <div class="border border-5 border-light border-top-0 p-4">
+                            <p class="text-primary fw-medium mb-2">{{post.title}}</p>
+                            <h5 class="lh-base mb-0">{{post.content}}</a>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
     <!-- Projects End -->
         
 
+ 
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    
 </body>
 
 </html>

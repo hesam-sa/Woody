@@ -4,3 +4,4 @@ sqlparse
 tzdata
 pillow
 django-taggit
+django-next-prev

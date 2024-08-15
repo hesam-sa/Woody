@@ -12,8 +12,16 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet">
+
 </head>
 <style>
+div.relative {
+    position: relative;
+    left: 900px;
+    top: -500px;
+}
+
     
 </style>
 
@@ -73,18 +81,90 @@
                             <h5 class="lh-base mb-0">{{post.content}}</a>
                         </div>
                     </div>
+                    
                 </div>
                 
             </div>
         </div>
     </div>
     <!-- Projects End -->
-        
+     
+    <div class="relative">
+        <p><a href="#">author: {{post.author}}</p></a>
+        <P><a href="#">created in:{{post.created_date|date:"M,D,y"}}</P></a>
+        <p><a href="#">{{post.counted_view}} views</p></a>
+        <p><a href="#">tags</p></a>
+        <p><a href="#">categoreis</p></a>
+        <p><a href="#">comments</p></a>
+    </div>
 
  
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+
+    <section class="post-content-area single-post-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					
+					<div class="navigation-area">
+						<div class="row">
+							{% if not prev.id == post.id %}
+							<div
+								class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+								<div class="thumb">
+									<a href="{% url 'blog:single' pid=prev.id %}"><img class="img-fluid"
+											src="{{prev.image.url}}" alt=""></a>
+								</div>
+								<div class="arrow">
+									<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+								</div>
+								<div class="detials">
+									<p>Prev posts</p>
+									<p>id:{{prev.id}}</p>
+									<a href="{% url 'blog:single' pid=prev.id %}">
+										<h4>{{prev.title}}</h4>
+									</a>
+								</div>
+							</div>
+							{% endif %}
+							{% if not next.id == post.id %}
+							<div
+								class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center ">
+								<div class="detials">
+
+									<p>next post</p>
+
+									<p>id:{{next.id}}</p>
+
+									<a href="{% url 'blog:single' pid=next.id %}">
+										<h4>{{next.title}}</h4>
+									</a>
+								</div>
+								<div class="arrow">
+									<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+								</div>
+								<div class="thumb">
+									<a href="{% url 'blog:single' pid=next.id %}"><img class="img-fluid"
+											src={{next.image.url}}></a>
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+
+					
+					
+				
+				
+			</div>
+
+		</div>
+
+
+	</section>
+	<!-- End post-content Area -->
 
     
 </body>

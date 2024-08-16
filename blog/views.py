@@ -19,5 +19,7 @@ def single_view(request,pid):
     if prev:
             pr=prev
     else: pr=post
+    post.counted_view += 1
+    post.save()
     context={'post':post,'next':nx,'prev':pr}
     return render(request,'blog/blog-single.html',context)

@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Post
+from .models import Post,Comment
 from next_prev import next_in_order, prev_in_order
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
@@ -25,7 +25,8 @@ def single_view(request,pid):
     else: pr=post
     post.counted_view += 1
     post.save()
-    context={'post':post,'next':nx,'prev':pr}
+    comment = Comment.objects.filter(post=post.id,)
+    context={'post':post,'next':nx,'prev':pr,'comment':comment}
     return render(request,'blog/blog-single.html',context)
 
 def comment_view(request):

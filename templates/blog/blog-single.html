@@ -16,17 +16,15 @@
 
 </head>
 <style>
-div.relative {
-    position: relative;
-    left: 900px;
-    top: -500px;
-}
-
-    
+    div.relative {
+        position: relative;
+        left: 900px;
+        top: -500px;
+    }
 </style>
 
 <body>
-   
+
 
 
 
@@ -42,8 +40,9 @@ div.relative {
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Blog</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></li>
-                    
+                    <li class="breadcrumb-item"><a class="text-white"
+                            href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></li>
+
                 </ol>
             </nav>
         </div>
@@ -60,9 +59,9 @@ div.relative {
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline mb-5" id="portfolio-flters">
-                        
+
                         <li class="mx-2" data-filter=".first">Single Blog</li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -70,10 +69,12 @@ div.relative {
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{post.image.url}}" alt="" >
+                            <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href="{{post.image.url}}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-outline-light mx-1" href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1" href="{{post.image.url}}"
+                                    data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1"
+                                    href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
                             </div>
                         </div>
                         <div class="border border-5 border-light border-top-0 p-4">
@@ -81,14 +82,14 @@ div.relative {
                             <h5 class="lh-base mb-0">{{post.content}}</a>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
     </div>
     <!-- Projects End -->
-     
+
     <div class="relative">
         <p><a href="#">author: {{post.author}}</p></a>
         <P><a href="#">created in:{{post.created_date|date:"M,D,y"}}</P></a>
@@ -98,73 +99,73 @@ div.relative {
         <p><a href="#">comments</p></a>
     </div>
 
- 
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <section class="post-content-area single-post-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 posts-list">
-					
-					<div class="navigation-area">
-						<div class="row">
-							{% if not prev.id == post.id %}
-							<div
-								class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-								<div class="thumb">
-									<a href="{% url 'blog:single' pid=prev.id %}"><img class="img-fluid"
-											src="{{prev.image.url}}" alt=""></a>
-								</div>
-								<div class="arrow">
-									<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-								</div>
-								<div class="detials">
-									<p>Prev posts</p>
-									<p>id:{{prev.id}}</p>
-									<a href="{% url 'blog:single' pid=prev.id %}">
-										<h4>{{prev.title}}</h4>
-									</a>
-								</div>
-							</div>
-							{% endif %}
-							{% if not next.id == post.id %}
-							<div
-								class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center ">
-								<div class="detials">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
 
-									<p>next post</p>
+                    <div class="navigation-area">
+                        <div class="row">
+                            {% if not prev.id == post.id %}
+                            <div
+                                class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="{% url 'blog:single' pid=prev.id %}"><img class="img-fluid"
+                                            src="{{prev.image.url}}" alt=""></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                </div>
+                                <div class="detials">
+                                    <p>Prev posts</p>
+                                    <p>id:{{prev.id}}</p>
+                                    <a href="{% url 'blog:single' pid=prev.id %}">
+                                        <h4>{{prev.title}}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if not next.id == post.id %}
+                            <div
+                                class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center ">
+                                <div class="detials">
 
-									<p>id:{{next.id}}</p>
+                                    <p>next post</p>
 
-									<a href="{% url 'blog:single' pid=next.id %}">
-										<h4>{{next.title}}</h4>
-									</a>
-								</div>
-								<div class="arrow">
-									<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-								</div>
-								<div class="thumb">
-									<a href="{% url 'blog:single' pid=next.id %}"><img class="img-fluid"
-											src={{next.image.url}}></a>
-								</div>
-							</div>
-							{% endif %}
-						</div>
-					</div>
+                                    <p>id:{{next.id}}</p>
 
-					
-					
-				
-				
-			</div>
-
-		</div>
+                                    <a href="{% url 'blog:single' pid=next.id %}">
+                                        <h4>{{next.title}}</h4>
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="{% url 'blog:single' pid=next.id %}"><img class="img-fluid"
+                                            src={{next.image.url}}></a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
 
 
-	</section>
-	<!-- End post-content Area -->
+
+
+
+                </div>
+
+            </div>
+
+
+    </section>
+    <!-- End post-content Area -->
     <!--comments-->
 
     <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
@@ -175,7 +176,7 @@ div.relative {
                         <div class="section-title text-start">
                             <h1 class="display-5 mb-4"> leave comment</h1>
                         </div>
-                        
+
                         <form method="post" action="{% url 'blog:comment' %}">
                             {% csrf_token %}
                             <div class="row g-3">
@@ -210,35 +211,39 @@ div.relative {
                                 </div>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
-                {% load static %}
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-        <div class="section-title text-center">
-            <h1 class="display-5 mb-5">Comments about this post</h1>
-        </div>
-        <div class="owl-carousel testimonial-carousel">
-            {% for comment in comment %}
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light p-2 mx-auto mb-3" src="{% static 'img/testimonial-1.jpg' %}" style="width: 90px; height: 90px;">
-                <div class="testimonial-text text-center p-4">
-                    <p>{{comment.subject}}</p>
-                    <h5 class="mb-1">{{comment.name}}</h5>
-                    <span class="fst-italic">{{comment.message}}</span>
+                <div class="comments-area">
+                    <h4>{{comment|length}} Comments</h4>
+                    {% for comment in comment %}
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="{% static 'img/un-user.jpg' %}" alt="">
+                                </div>
+                                <div class="desc">
+                                    <h5><a href="#">{{comment.name}}</a></h5>
+                                    <p class="date">{{comment.created_date}} </p>
+                                    <p class="comment">
+                                        {{comment.message}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                <a href="" class="btn-reply text-uppercase">reply</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-            </div>
-            {% endfor %}
-          
-        </div>
-    </div>
-</div>
+                
             </div>
         </div>
     </div>
 
-    
+
 </body>
 
 </html>

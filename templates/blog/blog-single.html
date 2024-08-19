@@ -2,109 +2,106 @@
 {% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Woody - Carpenter Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <link href="{% static 'css/nav.css' %}" rel="stylesheet">
-
+<title>180 Pixel Left Column, 3/4 x 1/4 Main Column.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-single.css' %}" >
+<link href="{% static 'css/nav.css' %}" rel="stylesheet">
 </head>
-<style>
-    div.relative {
-        position: relative;
-        left: 900px;
-        top: -500px;
-    }
-</style>
-
 <body>
-
-
-
-
-
-
-
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5">
-        <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Project</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Blog</a></li>
-                    <li class="breadcrumb-item"><a class="text-white"
-                            href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></li>
-
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
-
-    <!-- Projects Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">{{post.title}}</h1>
-            </div>
-            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12 text-center">
-                    <ul class="list-inline mb-5" id="portfolio-flters">
-
-                        <li class="mx-2" data-filter=".first">Single Blog</li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="row g-4 portfolio-container">
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded overflow-hidden">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-square btn-outline-light mx-1" href="{{post.image.url}}"
-                                    data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-outline-light mx-1"
-                                    href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="border border-5 border-light border-top-0 p-4">
-                            <p class="text-primary fw-medium mb-2">{{post.title}}</p>
-                            <h5 class="lh-base mb-0">{{post.content}}</a>
+<div id="doc" class="yui-t2">
+  <div id="hd">
+    <div id="header">
+      <!-- Page Header Start -->
+      <div class="container-fluid page-header py-5 mb-5">
+          <div class="container py-5">
+              <h1 class="display-3 text-white mb-3 animated slideInDown">Project</h1>
+              <nav aria-label="breadcrumb animated slideInDown">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
+                      <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Blog</a></li>
+                      <li class="breadcrumb-item"><a class="text-white"
+                              href="{% url 'blog:single' pid=post.id %}">{{post.title}}</a></li>
+  
+                  </ol>
+              </nav>
+          </div>
+      </div>
+      <!-- Page Header End --></div>
+  </div>
+  <div id="bd">
+    <div id="yui-main">
+      <div class="yui-b">
+        <div class="yui-ge">
+          <div class="yui-u first">
+            <div class="content">
+              <div class="container-xxl py-5">
+                <div class="container">
+                   
+                    <div class="section-title text-center">
+                        <h1 class="display-5 mb-5">{{post.title}}</h1>
+                    </div>
+                    <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="col-12 text-center">
+                            <ul class="list-inline mb-5" id="portfolio-flters">
+        
+                                <li class="mx-2" data-filter=".first">Single Blog</li>
+        
+                            </ul>
                         </div>
                     </div>
-
+                    
+                    <div class="row g-4 portfolio-container">
+                        <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="rounded overflow-hidden">
+                                <div class="position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="{{post.image.url}}" alt="">
+                                    <div class="portfolio-overlay">
+                                        <a class="btn btn-square btn-outline-light mx-1" href="{{post.image.url}}"
+                                            data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-square btn-outline-light mx-1"
+                                            href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="border border-5 border-light border-top-0 p-4">
+                                    <p class="text-primary fw-medium mb-2">{{post.title}}</p>
+                                    <h5 class="lh-base mb-0">{{post.content}}</a>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+                    
                 </div>
-
             </div>
+            </div>
+          </div>
+          <div class="yui-u">
+            <div class="content"></div>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Projects End -->
-
-    <div class="relative">
-        <p><a href="#">author: {{post.author}}</p></a>
-        <P><a href="#">created in:{{post.created_date|date:"M,D,y"}}</P></a>
-        <p><a href="#">{{post.counted_view}} views</p></a>
-        <p><a href="#">tags</p></a>
-        <p><a href="#">categoreis</p></a>
-        <p><a href="#">comments</p></a>
+    <div class="yui-b">
+      <div id="secondary">
+        <div class="relative">
+          <p><a href="#">author: {{post.author}}</p></a>
+          <P><a href="#">created in:{{post.created_date|date:"M,D,y"}}</P></a>
+          <p><a href="#">{{post.counted_view}} views</p></a>
+          <p><a href="#">tags</p></a>
+          <p><a href="#">categoreis</p></a>
+          <p><a href="#">comments</p></a>
+          </div>
+      </div>
     </div>
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <section class="post-content-area single-post-area">
+  </div>
+  <div id="ft">
+    <div id="footer">
+      <section class="post-content-area single-post-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
@@ -165,10 +162,12 @@
 
 
     </section>
-    <!-- End post-content Area -->
-    <!--comments-->
+    </div>
+  </div>
 
-    <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
+  <div id="ft">
+    <div id="footer">
+      <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
         <div class="container contact px-lg-0">
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
@@ -247,8 +246,9 @@
         </div>
     </div>
 
-
+    </div>
+  </div>
+</div>
 </body>
-
 </html>
 {% endblock %}

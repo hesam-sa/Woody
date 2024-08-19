@@ -33,9 +33,14 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True) 
     email = models.EmailField()
     subject = models.CharField(max_length=255)
     message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Ensure a one-to-one relationship
+    avatar = models.ImageField(upload_to='users/')  # Renamed field to 'avatar'

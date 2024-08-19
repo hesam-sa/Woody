@@ -221,7 +221,11 @@
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
+                                    {% if comment.user %}
+                                    <img src="{{ comment.user.userprofile.avatar.url }}" alt="">
+                                    {% else %}
                                     <img src="{% static 'img/un-user.jpg' %}" alt="">
+                                    {% endif %}
                                 </div>
                                 <div class="desc">
                                     <h5><a href="#">{{comment.name}}</a></h5>

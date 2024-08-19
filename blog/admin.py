@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Category,Comment
+from .models import Post,Category,Comment,UserProfile
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
@@ -11,7 +11,7 @@ class PostAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
-    list_display = ('post','name','approved','created_date',)
+    list_display = ('post','name','approved','created_date','user')
     list_filter = ('post','approved',)
     ordering = ['created_date']
     search_fields = ['title','content']
@@ -19,3 +19,4 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Post,PostAdmin)
 admin.site.register(Category)
 admin.site.register(Comment,CommentAdmin)
+admin.site.register(UserProfile)

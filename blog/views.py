@@ -7,8 +7,10 @@ from django.contrib import messages
 
 
 # Create your views here.
-def blog_view(request):
+def blog_view(request,author_name=None):
     posts = Post.objects.filter(status=True)
+    if author_name:
+           posts = posts.filter(author__username=author_name)
     context = {'posts':posts}
     return render(request,'blog/index.html',context)
 

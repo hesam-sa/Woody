@@ -1,18 +1,29 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Post,Comment
 from next_prev import next_in_order, prev_in_order
-from .forms import CommentForm
+from .forms import CommentForm,PostForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+
 
 
 # Create your views here.
 def blog_view(request,author_name=None):
-    posts = Post.objects.filter(status=True)
-    if author_name:
-           posts = posts.filter(author__username=author_name)
-    context = {'posts':posts}
-    return render(request,'blog/index.html',context)
+        posts = Post.objects.filter(status=True)
+        if author_name:
+                posts = posts.filter(author__username=author_name)
+        posts=Paginator(posts,6)
+        try:
+                page_number=request.GET.get('page')
+                posts=posts.get_page(page_number)
+        except PageNotAnInteger:
+                posts=posts.get_page(1)
+        except EmptyPage:
+                posts=posts.get_page(1)
+
+        context = {'posts':posts}
+        return render(request,'blog/index.html',context)
 
 def single_view(request,pid):
     post=get_object_or_404(Post,pk=pid,status=1)
@@ -33,11 +44,25 @@ def single_view(request,pid):
 
 def comment_view(request):
         if request.method == 'POST':
-                form = CommentForm(request.POST)
+                form = CommentForm(request.POST,request.FILES, instance=Post)
                 if form.is_valid():
                         form.save()
                         messages.add_message(request,messages.SUCCESS,'Your Email Submitted Successfully')
-                        return HttpResponseRedirect('/')
+                        return HttpResponseRedirect('')
                 else: 
                        messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
-                       return HttpResponseRedirect('/')
+                       return HttpResponseRedirect('')
+                
+def newpost_view(request):
+        if request.method == 'POST':
+                form = PostForm(request.POST,request.FILES)
+                if form.is_valid():
+                        imgage = form.cleaned_data.get("image")
+                        form.save()
+                        messages.add_message(request,messages.SUCCESS,'You Created New Post Successfully')
+                        return HttpResponseRedirect('blog')
+                else: 
+                       messages.add_message(request,messages.ERROR,'New Post Not Created') 
+                       return HttpResponseRedirect('blog')
+        form = PostForm()
+        return render(request,'blog/newpost.html',{'form':form})

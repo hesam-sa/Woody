@@ -12,6 +12,7 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    
 </head>
 
 <body>
@@ -161,7 +162,28 @@
  
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    
+    <nav class="blog-pagination justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+            {% if posts.has_previous %}
+            <a href="?page={{posts.previous_page_number}}" class="btn btn-lg btn-primary btn-lg-square rounded-0"><</a>
+            {% endif %}
+            </li>
+            {% for i in posts.paginator.page_range %}
+            {% if posts.number == i %}
+            <li class="page-item active"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+            {% else %}
+            <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            <li>
+            {% if posts.has_next %}
+            <a href="?page={{posts.next_page_number}}" class="btn btn-lg btn-primary btn-lg-square rounded-0">></a>
+            {% endif %}
+            </li>
+        </ul>
+    </nav>
 
     
 </body>

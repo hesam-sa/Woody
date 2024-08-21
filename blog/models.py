@@ -42,5 +42,5 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Ensure a one-to-one relationship
-    avatar = models.ImageField(upload_to='users/')  # Renamed field to 'avatar'
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  
+    avatar = models.ImageField(upload_to='users/',default='users/un-user.jpg')  

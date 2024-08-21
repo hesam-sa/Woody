@@ -9,10 +9,15 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
 # Create your views here.
-def blog_view(request,author_name=None):
+def blog_view(request,author_name=None,remove_id=None):
         posts = Post.objects.filter(status=True)
         if author_name:
                 posts = posts.filter(author__username=author_name)
+        if remove_id:
+                form=Post.objects.get(id=remove_id)
+                form.delete()
+                messages.add_message(request,messages.SUCCESS,f'Post Number {remove_id} deleted')
+                return HttpResponseRedirect('/')
         posts=Paginator(posts,6)
         try:
                 page_number=request.GET.get('page')
@@ -44,14 +49,14 @@ def single_view(request,pid):
 
 def comment_view(request):
         if request.method == 'POST':
-                form = CommentForm(request.POST,request.FILES, instance=Post)
+                form = CommentForm(request.POST)
                 if form.is_valid():
                         form.save()
                         messages.add_message(request,messages.SUCCESS,'Your Email Submitted Successfully')
-                        return HttpResponseRedirect('')
+                        return HttpResponseRedirect('/')
                 else: 
                        messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
-                       return HttpResponseRedirect('')
+                       return HttpResponseRedirect('/')
                 
 def newpost_view(request):
         if request.method == 'POST':

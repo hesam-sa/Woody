@@ -30,9 +30,9 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">Project</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Project</li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Pages</a></li>
+                    
                 </ol>
             </nav>
         </div>
@@ -50,7 +50,7 @@
                 <div class="col-12 text-center">
                     <ul class="list-inline mb-5" id="portfolio-flters">
                       
-                        <a class="mx-2" data-filter=".first" href="{% url 'blog:newpost' %}">Carpentry</a>
+                        <a class="mx-2" data-filter=".first" href="{% url 'blog:newpost' %}">Create new Post</a>
                         
                     </ul>
                 </div>
@@ -66,6 +66,7 @@
                             <div class="portfolio-overlay">
                                 <a class="btn btn-square btn-outline-light mx-1" href={{post.image.url}}  data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-square btn-outline-light mx-1" href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1" href="{% url 'blog:remove' remove_id=post.id %}">del<i class="remove"></i></a>
                             </div>
                         </div>
                         <div class="border border-5 border-light border-top-0 p-4">

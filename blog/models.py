@@ -33,7 +33,7 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True,default='3') 
     email = models.EmailField(help_text="A valid email address, please.")
     subject = models.CharField(max_length=255)
     message = models.TextField()
@@ -44,3 +44,4 @@ class Comment(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  
     avatar = models.ImageField(upload_to='users/',default='users/un-user.jpg')  
+    

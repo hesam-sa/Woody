@@ -38,6 +38,8 @@
                 <!-- Page Header End -->
             </div>
         </div>
+
+        <!-- Show post -->
         <div id="bd">
             <div id="yui-main">
                 <div class="yui-b">
@@ -123,6 +125,9 @@
                 </div>
             </div>
         </div>
+        <!-- end Show post -->
+
+        <!-- nex and prev post  -->
         <div id="ft">
             <div id="footer">
                 <section class="post-content-area single-post-area">
@@ -188,13 +193,17 @@
                 </section>
             </div>
         </div>
+        <!--  end nex and prev post  -->
 
+        <!-- comment -->
         <div id="ft">
             <div id="footer">
                 <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
                     <div class="container contact px-lg-0">
                         <div class="row g-0 mx-lg-0">
                             <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
+
+                                <!-- Leave comment  -->
                                 <div class="p-lg-5 ps-lg-0">
                                     <div class="section-title text-start" id="cmd">
                                         <h1 class="display-5 mb-4" > leave comment</h1>
@@ -205,6 +214,7 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating">
+                                                    
                                                     <input type="hidden" name="post" value={{post.id}}>
                                                     <input type="text" class="form-control" name="name"
                                                         placeholder="Your Name">
@@ -240,7 +250,10 @@
                                     </form>
 
                                 </div>
+                                <!-- end Leave comment  -->
                             </div>
+
+                            <!-- show comment -->
                             <div class="comments-area">
                                 <h4>{{comment|length}} Comments</h4>
                                 {% for comment in comment %}
@@ -248,11 +261,10 @@
                                     <div class="single-comment justify-content-between d-flex">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
-                                                {% if comment.user %}
+                                                
                                                 <img src="{{ comment.user.userprofile.avatar.url }}" alt="">
-                                                {% else %}
-                                                <img src="{% static 'img/un-user.jpg' %}" alt="">
-                                                {% endif %}
+                                              
+                                               
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">{{comment.name}}</a></h5>
@@ -269,6 +281,7 @@
                                 </div>
                                 {% endfor %}
                             </div>
+                            <!-- end show comment -->
 
                         </div>
                     </div>
@@ -276,6 +289,7 @@
 
             </div>
         </div>
+        <!-- end comment  -->
     </div>
 </body>
 

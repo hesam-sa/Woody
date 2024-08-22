@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="{% static 'css/acc.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- /* From Uiverse.io by bociKond */  -->
+<form class="form" method="post" action="{% url 'accounts:login' %}">
+    {% csrf_token %}
+  <span class="input-span">
+    <label for="email" class="label">username</label>
+    <input type="username" name="username" id="email"
+  /></span>
+  <span class="input-span">
+    <label for="password" class="label">Password</label>
+    <input type="password" name="password" id="password"
+  /></span>
+  <span class="span"><a href="#">Forgot password?</a></span>
+  <input class="submit" type="submit">
+  <span class="span">Don't have an account? <a href="#">Sign up</a></span>
+</form>
+
+    
+</body>
+</html>
+{% endblock %}

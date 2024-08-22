@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'bootstrap4',
     'blog',
-    'taggit'
+    'taggit',
+    'accounts'
     
 ]
 

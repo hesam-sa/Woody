@@ -23,7 +23,7 @@
     <label for="password" class="label">Password</label>
     <input type="password" name="password" id="password"
   /></span>
-  <span class="span"><a href="#">Forgot password?</a></span>
+  <span class="span"><a href="{% url 'accounts:password_reset' %}">Forgot password?</a></span>
   <input class="submit" type="submit">
   <span class="span">Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a></span>
 </form>

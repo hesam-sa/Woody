@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
-from django.contrib.auth.models import User
+from .forms import CustomUserCreationForm,UserForm
 from django.contrib import messages
-from blog.models import UserProfile
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 def login_view(request):
@@ -38,7 +39,7 @@ def logout_view(request):
 def signup_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
-            form = UserCreationForm(request.POST)
+            form = CustomUserCreationForm(request.POST)
             if form.is_valid():
               
                 form.save()
@@ -50,6 +51,30 @@ def signup_view(request):
     else:
         messages.add_message(request,messages.ERROR,f'You are already logged in as {request.user.username} You should Log Out First' )
         return redirect('/')
-    form=UserCreationForm()
+    form=CustomUserCreationForm()
     context={'form':form}
     return render(request,'accounts/signup.html',context)
+
+def profile_view(request):
+    username = request.user.username
+    
+    if request.method == 'POST':
+            
+            user = User.objects.get(username=username)
+            form = UserForm(request.POST)
+
+            if form.is_valid():
+                user.first_name=form.cleaned_data.get('first_name')
+                user.last_name=form.cleaned_data.get('last_name')
+                user.email=form.cleaned_data.get('email')
+                user.save()
+                
+                
+                messages.add_message(request,messages.SUCCESS,'profile Complete')
+                return redirect('/accounts/login')
+            else:
+                messages.add_message(request,messages.ERROR,'Not submitted')
+    
+    form = UserForm()
+    context={'form':form}
+    return render(request,'accounts/profile.html',context)

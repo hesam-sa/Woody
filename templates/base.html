@@ -8,7 +8,7 @@
 {% endif %}
 <head>
     <meta charset="utf-8">
-    <title>Woody - Carpenter Website Template</title>
+    <title>Woody - Carpenter Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -93,7 +93,11 @@
                 <a href="{% url 'blog:blog' %}" class="nav-item nav-link">Blog</a>
                 <a href="{% url 'website:contact' %}" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'accounts:logout' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">{{user.username}}<i class="fa fa-arrow-right ms-3">Log Out</i></a>
+            {% else %}
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+            {% endif %}
         </div>
     </nav>
     <!-- Navbar End -->

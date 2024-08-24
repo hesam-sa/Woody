@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from .forms import CustomUserCreationForm,UserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-
+from blog.models import UserProfile
 # Create your views here.
 
 def login_view(request):
@@ -57,7 +57,7 @@ def signup_view(request):
 
 def profile_view(request):
     username = request.user.username
-    
+    userid = request.user.id
     if request.method == 'POST':
             
             user = User.objects.get(username=username)
@@ -68,13 +68,18 @@ def profile_view(request):
                 user.last_name=form.cleaned_data.get('last_name')
                 user.email=form.cleaned_data.get('email')
                 user.save()
-                
-                
+                profile=UserProfile(user=user)
+                profile.save()
                 messages.add_message(request,messages.SUCCESS,'profile Complete')
-                return redirect('/accounts/login')
+                return redirect('/')
             else:
                 messages.add_message(request,messages.ERROR,'Not submitted')
-    
-    form = UserForm()
-    context={'form':form}
+                return redirect('/')
+    try:        
+        profile=UserProfile.objects.get(user=userid)
+        form = UserForm()
+        context={'form':form,'profile':profile}
+    except:
+        form = UserForm()
+        context={'form':form}
     return render(request,'accounts/profile.html',context)

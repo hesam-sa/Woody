@@ -42,6 +42,8 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  
+    user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)  
     avatar = models.ImageField(upload_to='users/',default='users/un-user.jpg')  
     
+    
+ 

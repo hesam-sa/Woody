@@ -62,7 +62,7 @@ def newpost_view(request):
         if request.method == 'POST':
                 form = PostForm(request.POST,request.FILES)
                 if form.is_valid():
-                        imgage = form.cleaned_data.get("image")
+                        image = form.cleaned_data.get("image")
                         form.save()
                         messages.add_message(request,messages.SUCCESS,'You Created New Post Successfully')
                         return HttpResponseRedirect('blog')

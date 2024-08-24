@@ -55,7 +55,8 @@ def signup_view(request):
     context={'form':form}
     return render(request,'accounts/signup.html',context)
 
-def profile_view(request):
+def profile_view(request,change=None):
+    
     username = request.user.username
     userid = request.user.id
     if request.method == 'POST':
@@ -68,6 +69,7 @@ def profile_view(request):
                 user.last_name=form.cleaned_data.get('last_name')
                 user.email=form.cleaned_data.get('email')
                 user.save()
+                
                 profile=UserProfile(user=user)
                 profile.save()
                 messages.add_message(request,messages.SUCCESS,'profile Complete')
@@ -75,11 +77,20 @@ def profile_view(request):
             else:
                 messages.add_message(request,messages.ERROR,'Not submitted')
                 return redirect('/')
-    try:        
+    try: 
+               
         profile=UserProfile.objects.get(user=userid)
         form = UserForm()
-        context={'form':form,'profile':profile}
+        if change:
+            context={'form':form,'profile':profile,'change':change}
+        else:    
+            context={'form':form,'profile':profile}    
     except:
         form = UserForm()
-        context={'form':form}
+        if change:
+            context={'form':form,'change':change}
+        else:    
+            context={'form':form,}
+
     return render(request,'accounts/profile.html',context)
+

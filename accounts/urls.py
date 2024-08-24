@@ -10,6 +10,7 @@ urlpatterns = [
     path('signup',signup_view,name='signup'),
     path('reset_password',auth_view.PasswordResetView.as_view(),name='password_reset'),      
     path('profile',profile_view,name='profile'),
+    path('<str:change>',profile_view,name='change'),
     
  
 ]

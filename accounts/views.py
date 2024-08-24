@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
-from .forms import CustomUserCreationForm,UserForm
+from .forms import CustomUserCreationForm,UserForm,ProfileForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from blog.models import UserProfile
@@ -61,22 +61,32 @@ def profile_view(request,change=None):
     userid = request.user.id
     if request.method == 'POST':
             
-            user = User.objects.get(username=username)
-            form = UserForm(request.POST)
+        user = User.objects.get(username=username)
+        form = UserForm(request.POST)
 
-            if form.is_valid():
-                user.first_name=form.cleaned_data.get('first_name')
-                user.last_name=form.cleaned_data.get('last_name')
-                user.email=form.cleaned_data.get('email')
-                user.save()
-                
-                profile=UserProfile(user=user)
-                profile.save()
-                messages.add_message(request,messages.SUCCESS,'profile Complete')
-                return redirect('/')
-            else:
-                messages.add_message(request,messages.ERROR,'Not submitted')
-                return redirect('/')
+        if form.is_valid():
+            user.first_name=form.cleaned_data.get('first_name')
+            user.last_name=form.cleaned_data.get('last_name')
+            user.email=form.cleaned_data.get('email')
+            user.save()
+            profile=UserProfile(user=user)
+            profile.save()
+            messages.add_message(request,messages.SUCCESS,'profile Complete')
+            
+        else:
+            messages.add_message(request,messages.ERROR,'Not submitted')
+
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            avatar = form.cleaned_data.get('avatar')
+            print(avatar)
+            profile=UserProfile(user=user,avatar=avatar)
+            profile.save()
+            messages.add_message(request,messages.SUCCESS,'avatar saved successfully')
+            return redirect('/')
+        else:
+            messages.add_message(request,messages.ERROR,'Not saved')
+            return redirect('/')
     try: 
                
         profile=UserProfile.objects.get(user=userid)

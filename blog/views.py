@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from .models import Post,Comment
 from next_prev import next_in_order, prev_in_order
 from .forms import CommentForm,PostForm
@@ -53,7 +53,7 @@ def comment_view(request):
                 if form.is_valid():
                         form.save()
                         messages.add_message(request,messages.SUCCESS,'Your Email Submitted Successfully')
-                        return HttpResponseRedirect('/')
+                        return redirect('/accounts/login')
                 else: 
                        messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
                        return HttpResponseRedirect('/')

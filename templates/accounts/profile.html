@@ -53,7 +53,7 @@
                                 </div>
                                 <hr>
                                 <div class="col-12">
-                                    <a href="{% url 'accounts:change' change='edit' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">{{user.username}}<i class="fa fa-arrow-right ms-3"></i></a>
+                                    <a href="{% url 'accounts:change' change='edit' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Edit<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </form>
@@ -84,7 +84,7 @@
                         <form action="{% url 'accounts:profile' %}" method="post" enctype='multipart/form-data'>
                             {% csrf_token %}
                             <p class="mb-4"></a>avatar:</p>
-                            <input type="file" name="avatar" alt="{ media 'users/un-user.jpg'}" title="chose an avatar"/>
+                            <input type="file" name="avatar" alt="users/un-user.jpg" title="chose an avatar"/>
                                 <hr>
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -108,7 +108,7 @@
                                     </div>
                                     <hr>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Submite</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit" title="If You Leave Fields Empty Data Save Blank">Submite</button>
                                     </div>
                                 </div>
                             </form>

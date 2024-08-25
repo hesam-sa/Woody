@@ -14,7 +14,7 @@
                         <img class="img-fluid" src="{{post.avatar.url}}" alt="" height="100" width="100">
                         <div class="team-social">
                             
-                            <a class="btn btn-square" href="{% url 'accounts:profile' %}"><i>info</i></a>
+                            <a class="btn btn-square" href="{% url 'accounts:profile' user_id=post.user.id %}"><i>info</i></a>
                            
                         </div>
                     </div>

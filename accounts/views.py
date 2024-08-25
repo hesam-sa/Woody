@@ -55,13 +55,13 @@ def signup_view(request):
     context={'form':form}
     return render(request,'accounts/signup.html',context)
 
-def profile_view(request,change=None):
+def profile_view(request,change=None,user_id=None):
     
-    username = request.user.username
-    userid = request.user.id
+    
+    userid = user_id
     if request.method == 'POST':
             
-        user = User.objects.get(username=username)
+        user = User.objects.get(id=userid)
         form = UserForm(request.POST)
 
         if form.is_valid():

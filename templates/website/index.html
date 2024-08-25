@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load blog_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -271,7 +272,7 @@
   
 
     <!-- Team Start -->
-    {% include 'website/team.html' %}
+    {% profiles %}
     <!-- Team End -->
 
 

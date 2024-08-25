@@ -9,7 +9,7 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
 # Create your views here.
-def blog_view(request,author_name=None,remove_id=None):
+def blog_view(request,author_name=None,remove_id=None,tag_id=None,cat_name=None):
         posts = Post.objects.filter(status=True)
         if author_name:
                 posts = posts.filter(author__username=author_name)
@@ -17,7 +17,11 @@ def blog_view(request,author_name=None,remove_id=None):
                 form=Post.objects.get(id=remove_id)
                 form.delete()
                 messages.add_message(request,messages.SUCCESS,f'Post Number {remove_id} deleted')
-                return HttpResponseRedirect('/')
+                return redirect('blog')
+        if tag_id:
+                posts = posts.filter(tags=tag_id)
+        if cat_name:
+                posts = posts.filter(category__name=cat_name)
         posts=Paginator(posts,6)
         try:
                 page_number=request.GET.get('page')

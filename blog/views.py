@@ -65,15 +65,21 @@ def comment_view(request):
                        return HttpResponseRedirect('/')
                 
 def newpost_view(request):
-        if request.method == 'POST':
-                form = PostForm(request.POST,request.FILES)
-                if form.is_valid():
-                        image = form.cleaned_data.get("image")
-                        form.save()
-                        messages.add_message(request,messages.SUCCESS,'You Created New Post Successfully')
-                        return HttpResponseRedirect('blog')
-                else: 
-                       messages.add_message(request,messages.ERROR,'New Post Not Created') 
-                       return HttpResponseRedirect('blog')
-        form = PostForm()
-        return render(request,'blog/newpost.html',{'form':form})
+        if request.user.is_authenticated:
+                if request.method == 'POST':
+                        user_id=request.user.id
+                        form = PostForm(request.POST,request.FILES)
+                        if form.is_valid():
+                                image = form.cleaned_data.get("image")
+                                form.save()
+                                messages.add_message(request,messages.SUCCESS,'You Created New Post Successfully')
+                                return HttpResponseRedirect('blog')
+                        else: 
+                                messages.add_message(request,messages.ERROR,'New Post Not Created') 
+                                return HttpResponseRedirect('blog')
+                form = PostForm()
+                return render(request,'blog/newpost.html',{'form':form})
+        else:
+                messages.add_message(request,messages.ERROR,'For Create New Post You should Login First') 
+                return redirect('/blog')
+        

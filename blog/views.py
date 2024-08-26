@@ -20,6 +20,8 @@ def blog_view(request,author_name=None,remove_id=None,tag_id=None,cat_name=None)
                 return redirect('/blog')
         if tag_id:
                 posts = posts.filter(tags=tag_id)
+            
+                
         if cat_name:
                 posts = posts.filter(category__name=cat_name)
         posts=Paginator(posts,6)

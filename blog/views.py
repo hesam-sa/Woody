@@ -17,7 +17,7 @@ def blog_view(request,author_name=None,remove_id=None,tag_id=None,cat_name=None)
                 form=Post.objects.get(id=remove_id)
                 form.delete()
                 messages.add_message(request,messages.SUCCESS,f'Post Number {remove_id} deleted')
-                return redirect('blog')
+                return redirect('/blog')
         if tag_id:
                 posts = posts.filter(tags=tag_id)
         if cat_name:

@@ -26,10 +26,10 @@
                         <div class="row justify-content-center">
                             <div class="col-12 col-lg-8 text-center">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome To WooDY</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Best Carpenter & Craftsman Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Free Quote</a>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">Best Carpenter & Craftsman</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">For visit Popular Post Click</p>
+                                <a href="#pop" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Popular Posts</a>
+                                <a href="{% url 'blog:blog' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">All Post</a>
                             </div>
                         </div>
                     </div>
@@ -42,10 +42,9 @@
                         <div class="row justify-content-center">
                             <div class="col-12 col-lg-8 text-center">
                                 <h5 class="text-white text-uppercase mb-3 animated slideInDown">Welcome To WooDY</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Best Carpenter & Craftsman Services</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Free Quote</a>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">Best Carpenter & Craftsman</h1>
+                                <p class="fs-5 fw-medium text-white mb-4 pb-2">To Visit List Of Users</p>
+                                <a href="#users" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Users</a>
                             </div>
                         </div>
                     </div>
@@ -83,9 +82,9 @@
     <!-- About End -->
 
 
-    <!-- Service Start -->
+    <!-- popularposts Start -->
     {% popularposts %}
-    <!-- Service End -->
+    <!-- popularposts End -->
 
 
     <!-- Feature Start -->
@@ -156,6 +155,9 @@
     </div>
     <!-- Feature End -->
 
+     <!-- Team Start -->
+     {% profiles %}
+     <!-- Team End -->
 
     <!-- Projects Start -->
     <div class="container-xxl py-5">
@@ -271,9 +273,7 @@
 
   
 
-    <!-- Team Start -->
-    {% profiles %}
-    <!-- Team End -->
+   
 
 
     <!-- Testimonial Start -->

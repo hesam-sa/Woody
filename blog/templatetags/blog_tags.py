@@ -1,5 +1,6 @@
 from django import template
-from blog.models import UserProfile,Post
+from blog.models import UserProfile,Post,Comment
+from django.core.paginator import Paginator
 
 
 register = template.Library()
@@ -15,3 +16,4 @@ def popularposts():
     
     posts = Post.objects.all().order_by('-counted_view')[:6]
     return {'posts':posts}
+

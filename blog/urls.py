@@ -10,6 +10,6 @@ urlpatterns = [
     path("author/<str:author_name>",blog_view,name='author'),
     path('newpost',newpost_view,name='newpost'),
     path("remove/<int:remove_id>",blog_view,name='remove'),
-    path("tags/<str:tag_id>",blog_view,name='tags'),
+    path("tags/<str:tag_name>",blog_view,name='tags'),
     path("category/<str:cat_name>",blog_view,name='cat'),
 ]

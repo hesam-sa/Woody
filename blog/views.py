@@ -53,11 +53,22 @@ def single_view(request,pid):
     if prev:
             pr=prev
     else: pr=post
-    post.counted_view += 1
-    post.save()
-    comment = Comment.objects.filter(post=post.id,)
-    context={'post':post,'next':nx,'prev':pr,'comment':comment}
-    return render(request,'blog/blog-single.html',context)
+    if not post.login_required:
+        post.counted_view += 1
+        post.save()
+        comment = Comment.objects.filter(post=post.id,)
+        context={'post':post,'next':nx,'prev':pr,'comment':comment}
+        return render(request,'blog/blog-single.html',context)
+    else:
+        if request.user.is_authenticated:
+                post.counted_view += 1
+                post.save()
+                comment = Comment.objects.filter(post=post.id,)
+                context={'post':post,'next':nx,'prev':pr,'comment':comment}
+                return render(request,'blog/blog-single.html',context)
+        else:
+                messages.add_message(request,messages.ERROR,'You Should Login First To See This Post')
+                return redirect('/blog')
 
 def comment_view(request):
         if request.method == 'POST':

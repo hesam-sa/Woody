@@ -9,24 +9,27 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
 # Create your views here.
-def blog_view(request,author_name=None,remove_id=None,tag_name=None,cat_name=None):
+def blog_view(request,**kwargs):
         posts = Post.objects.filter(status=True)
         filter = ""
-        if author_name:
-                posts = posts.filter(author__username=author_name)
-                filter = author_name
-        if remove_id:
-                form=Post.objects.get(id=remove_id)
+        folder = ""
+        if kwargs.get('author_name') != None:
+                posts = posts.filter(author__username=kwargs['author_name'])
+                filter = kwargs['author_name']
+                folder = 'author'
+        if  kwargs.get('remove_id') != None:
+                form=Post.objects.get(id=kwargs['remove_id'])
                 form.delete()
-                messages.add_message(request,messages.SUCCESS,f'Post Number {remove_id} deleted')
+                messages.add_message(request,messages.SUCCESS,f'Post Number {kwargs["remove_id"]} deleted')
                 return redirect('/blog')
-        if tag_name:
-                posts = posts.filter(tags__name=tag_name)
-                filter = tag_name
-                
-        if cat_name:
-                posts = posts.filter(category__name=cat_name)
-                filter = cat_name
+        if kwargs.get('tag_name') != None:
+                posts = posts.filter(tags__name=kwargs['tag_name'])
+                filter = kwargs['tag_name']            
+                folder = 'tag'
+        if kwargs.get('cat_name') != None:
+                posts = posts.filter(category__name=kwargs['cat_name'])
+                filter = kwargs['cat_name']
+                folder = 'category'
         posts=Paginator(posts,6)
         try:
                 page_number=request.GET.get('page')
@@ -36,7 +39,7 @@ def blog_view(request,author_name=None,remove_id=None,tag_name=None,cat_name=Non
         except EmptyPage:
                 posts=posts.get_page(1)
 
-        context = {'posts':posts,'filter':filter}
+        context = {'posts':posts,'filter':filter,'folder':folder}
         return render(request,'blog/index.html',context)
 
 def single_view(request,pid):

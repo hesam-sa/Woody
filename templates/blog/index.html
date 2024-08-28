@@ -32,7 +32,10 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="{% url 'website:home' %}">Home</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">Blog</a></li>
+                    {% if folder != '' %}
+                    <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">{{folder}}</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="{% url 'blog:blog' %}">{{filter}}</a></li>
+                    {% endif %}
                     
                     
                     

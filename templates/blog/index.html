@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load blog_tags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@
 <body>
    
 
-
+    
 
 
 
@@ -88,6 +90,7 @@
                 </div>
                 
                 {% endfor %}
+                
                 <!-- <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
@@ -168,6 +171,8 @@
             
         </div>
     </div>
+
+    {% include 'blog/blog-search.html' %}
     <!-- Projects End -->
         
 

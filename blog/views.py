@@ -105,3 +105,12 @@ def newpost_view(request):
                 messages.add_message(request,messages.ERROR,'For Create New Post You should Login First') 
                 return redirect('/blog')
         
+
+def serach_view(request):
+        posts = Post.objects.filter(status=1)
+        if request.method == 'GET':
+                if s := request.GET.get('s'):
+                        posts = posts.filter(content__contains = s)
+
+        context = {'posts':posts}
+        return render(request,'blog/index.html',context)

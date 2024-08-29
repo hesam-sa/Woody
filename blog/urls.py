@@ -12,4 +12,5 @@ urlpatterns = [
     path("remove/<int:remove_id>",blog_view,name='remove'),
     path("tags/<str:tag_name>",blog_view,name='tags'),
     path("category/<str:cat_name>",blog_view,name='cat'),
+    path("search",serach_view,name='search'),
 ]

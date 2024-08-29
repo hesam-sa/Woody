@@ -27,7 +27,8 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('reset_password_sent',auth_view.PasswordResetDoneView.as_view(),name='password_reset_done'),
     path('reset/<uidb64>/<token>',auth_view.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
-    path('reset_password_complete',auth_view.PasswordResetCompleteView.as_view(),name='password_reset_complete')
+    path('reset_password_complete',auth_view.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+    path('captcha/', include('captcha.urls')),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

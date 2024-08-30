@@ -52,7 +52,8 @@
                                     </div>
                                 </div>
                                 <hr>
-                                {% if user.id == profile.user.id %}
+                                
+                                {% if user.id == userid %}
                                 <div class="col-12">
                                     <a href="{% url 'accounts:change' change='edit' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Edit<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>

@@ -14,6 +14,13 @@ def login_view(request):
             if form.is_valid():
                 username = form.cleaned_data.get('username')
                 password =form.cleaned_data.get('password')
+            else:
+                email = form.cleaned_data.get('username')
+                form2 =User.objects.all()
+                for fr in form2:
+                    if email==fr.email:
+                        username=fr.username
+                password = form.cleaned_data.get("password")
             try:
                 user = authenticate(request,username=username,password=password)
                 if user is not None:
@@ -47,7 +54,8 @@ def signup_view(request):
                 messages.add_message(request,messages.SUCCESS,'New User Is Created')
                 return redirect('/accounts/login')
             else:
-                messages.add_message(request,messages.ERROR,'New User Is Not Created')
+                messages.add_message(request,messages.ERROR,'New User Is Not Created / password must be complex')
+                return redirect('/accounts/signup')
     else:
         messages.add_message(request,messages.ERROR,f'You are already logged in as {request.user.username} You should Log Out First' )
         return redirect('/')
@@ -92,15 +100,15 @@ def profile_view(request,change=None,user_id=None):
         profile=UserProfile.objects.get(user=userid)
         form = UserForm()
         if change:
-            context={'form':form,'profile':profile,'change':change}
+            context={'form':form,'profile':profile,'change':change,'userid': user_id}
         else:    
-            context={'form':form,'profile':profile}    
+            context={'form':form,'profile':profile,'userid':user_id}    
     except:
         form = UserForm()
         if change:
-            context={'form':form,'change':change}
+            context={'form':form,'change':change,'userid': user_id}
         else:    
-            context={'form':form,}
+            context={'form':form,'userid': user_id}
 
     return render(request,'accounts/profile.html',context)
 

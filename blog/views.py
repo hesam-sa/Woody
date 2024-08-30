@@ -18,10 +18,15 @@ def blog_view(request,**kwargs):
                 filter = kwargs['author_name']
                 folder = 'author'
         if  kwargs.get('remove_id') != None:
-                form=Post.objects.get(id=kwargs['remove_id'])
-                form.delete()
-                messages.add_message(request,messages.SUCCESS,f'Post Number {kwargs["remove_id"]} deleted')
-                return redirect('/blog')
+                if request.user.is_authenticated:
+                        form=Post.objects.get(id=kwargs['remove_id'])
+                        form.delete()
+                        messages.add_message(request,messages.SUCCESS,f'Post Number {kwargs["remove_id"]} deleted')
+                        return redirect('/blog')
+                else:
+                        messages.add_message(request,messages.ERROR,"You Dont Have Permision To delete A Post")
+                        return redirect('/blog')
+                
         if kwargs.get('tag_name') != None:
                 posts = posts.filter(tags__name=kwargs['tag_name'])
                 filter = kwargs['tag_name']            
@@ -75,8 +80,8 @@ def comment_view(request):
                 form = CommentForm(request.POST)
                 if form.is_valid():
                         form.save()
-                        messages.add_message(request,messages.SUCCESS,'Your Email Submitted Successfully')
-                        return redirect('/accounts/login')
+                        messages.add_message(request,messages.SUCCESS,'Your Comment Submitted Successfully')
+                        return redirect('/blog')
                 else: 
                        messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
                        return HttpResponseRedirect('/')

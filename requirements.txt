@@ -6,3 +6,4 @@ pillow
 django-taggit
 django-next-prev
 django-simple-captcha
+django-multi-captcha-admin

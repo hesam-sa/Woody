@@ -83,7 +83,7 @@
                         </div>
 
                         
-                        <form action="{% url 'accounts:profile' user_id=1 %}" method="post" enctype='multipart/form-data'>
+                        <form action="{% url 'accounts:profile' user_id=user.id %}" method="post" enctype='multipart/form-data'>
                             {% csrf_token %}
                             <p class="mb-4"></a>avatar:</p>
                             <input type="file" name="avatar" alt="users/un-user.jpg" title="chose an avatar"/>

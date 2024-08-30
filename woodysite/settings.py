@@ -148,6 +148,7 @@ EMAIL_HOST_USER = 'hesam.sadat@gmail.com'
 EMAIL_HOST_PASSWORD = 'fnus kfdp twvr mmbe'
 
 #captcha Configuration 
-CAPTCHA_FONT_SIZE = 52
+CAPTCHA_FONT_SIZE = 62
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 CAPTCHA_LETTER_ROTATION = (-5,5)
+

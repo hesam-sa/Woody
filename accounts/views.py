@@ -40,7 +40,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def signup_view(request):

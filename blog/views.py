@@ -22,7 +22,7 @@ def blog_view(request,**kwargs):
                         form=Post.objects.get(id=kwargs['remove_id'])
                         form.delete()
                         messages.add_message(request,messages.SUCCESS,f'Post Number {kwargs["remove_id"]} deleted')
-                        return redirect('/blog')
+                        return redirect(request.META['HTTP_REFERER'])
                 else:
                         messages.add_message(request,messages.ERROR,"You Dont Have Permision To delete A Post")
                         return redirect('/blog')
@@ -73,7 +73,7 @@ def single_view(request,pid):
                 return render(request,'blog/blog-single.html',context)
         else:
                 messages.add_message(request,messages.ERROR,'You Should Login First To See This Post')
-                return redirect('/blog')
+                return redirect(request.META['HTTP_REFERER'])
 
 def comment_view(request):
         if request.method == 'POST':
@@ -81,10 +81,10 @@ def comment_view(request):
                 if form.is_valid():
                         form.save()
                         messages.add_message(request,messages.SUCCESS,'Your Comment Submitted Successfully')
-                        return redirect('/blog')
+                        return redirect(request.META['HTTP_REFERER'])
                 else: 
                        messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
-                       return HttpResponseRedirect('/')
+                       return HttpResponseRedirect(request.META['HTTP_REFERER'])
                 
 def newpost_view(request):
         if request.user.is_authenticated:
@@ -99,7 +99,7 @@ def newpost_view(request):
                                 return HttpResponseRedirect('/blog')
                         else: 
                                 messages.add_message(request,messages.ERROR,'New Post Not Created') 
-                                return HttpResponseRedirect('/blog')
+                                return HttpResponseRedirect(request.META['HTTP_REFERER'])
                 form = PostForm()
                 user_id=request.user.id
                 field = form.fields['author']

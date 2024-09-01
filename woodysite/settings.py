@@ -48,10 +48,21 @@ INSTALLED_APPS = [
     'django_summernote',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'robots'
+    'robots',
+    "compressor"
 
     
 ]
+
+#Compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+
 
 #site framwork
 SITE_ID = 2

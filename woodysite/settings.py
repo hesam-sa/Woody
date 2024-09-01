@@ -46,9 +46,20 @@ INSTALLED_APPS = [
     'accounts',
     'captcha',
     'django_summernote',
-  
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots'
+
     
 ]
+
+#site framwork
+SITE_ID = 2
+
+#Robots
+ROBOTS_USE_HOST=False
+ROBOTS_USE_SITEMAP=False
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

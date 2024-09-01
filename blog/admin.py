@@ -1,8 +1,10 @@
 from django.contrib import admin
 from .models import Post,Category,Comment,UserProfile
+from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
+    summernote_fields = ('content')
     date_hierarchy = 'published_date'
     list_display = ('id','title','counted_view','status','created_date','login_required')
     list_filter = ('status','login_required')

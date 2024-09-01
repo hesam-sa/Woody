@@ -29,6 +29,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>',auth_view.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset_password_complete',auth_view.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
     path('captcha/', include('captcha.urls')),
+     path('summernote/', include('django_summernote.urls')),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -7,7 +7,7 @@ csscompressor
 cssmin
 Django
 django-appconf
-django-bootstrap
+django-bootstrap4
 django-compressor
 django-multi-captcha-admin
 django-next-prev

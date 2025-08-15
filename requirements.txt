@@ -32,3 +32,5 @@ soupsieve
 sqlparse
 tzdata
 webencodings
+gunicorn
+

@@ -138,7 +138,8 @@ SECRET_KEY = 'django-insecure-y=sczm)r@)2go_j+nq5=8v(v1z9t+sghin@+jnewqf7*@th=+n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['hesamsa.pythonanywhere.com', '127.0.0.1', 'localhost']
+
 
 #site framwork
 SITE_ID = 2

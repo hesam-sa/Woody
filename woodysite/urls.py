@@ -22,6 +22,9 @@ from django.contrib.auth import views as auth_view
 from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
+from website.views import custom_404_view
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -39,9 +42,11 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
-    path('robots.txt',include('robots.urls'))
+    path('robots.txt',include('robots.urls')),
+    
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler404 = custom_404_view

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import NewsLetterForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -30,8 +30,16 @@ def newsletter_view(request):
         form = NewsLetterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request,messages.SUCCESS,'Your Comment Submitted Successfully Wait for admin to improve')
+            messages.add_message(request,messages.SUCCESS,'Your Email Submitted Successfully')
             return HttpResponseRedirect('/')
         else:
-            messages.add_message(request,messages.ERROR,'Your Comment Not Submitted') 
+            messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
             return HttpResponseRedirect('/')
+        
+def custom_404_view(request, exception):
+   context = {}
+   return render(request,'admin/404.html', context)
+
+def error_500(request):
+   context = {}
+   return render(request,'admin/500.html', context)

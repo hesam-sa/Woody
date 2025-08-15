@@ -5,6 +5,7 @@ from .forms import CommentForm,PostForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.db.models import Q
 
 
 
@@ -83,7 +84,7 @@ def comment_view(request):
                         messages.add_message(request,messages.SUCCESS,'Your Comment Submitted Successfully')
                         return redirect(request.META['HTTP_REFERER'])
                 else: 
-                       messages.add_message(request,messages.ERROR,'Your Email Not Submitted') 
+                       messages.add_message(request,messages.ERROR,'Your Comment Not Submitted') 
                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
                 
 def newpost_view(request):
@@ -115,7 +116,7 @@ def serach_view(request):
         posts = Post.objects.filter(status=1)
         if request.method == 'GET':
                 if s := request.GET.get('s'):
-                        posts = posts.filter(content__contains = s)
+                        posts = posts.filter(Q(content__contains = s) | Q(title__contains = s))
 
         context = {'posts':posts}
         return render(request,'blog/index.html',context)

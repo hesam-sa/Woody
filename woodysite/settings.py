@@ -16,16 +16,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y=sczm)r@)2go_j+nq5=8v(v1z9t+sghin@+jnewqf7*@th=+n'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -64,9 +54,6 @@ STATICFILES_FINDERS = (
 
 
 
-#site framwork
-SITE_ID = 2
-
 #Robots
 ROBOTS_USE_HOST=False
 ROBOTS_USE_SITEMAP=False
@@ -103,15 +90,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'woodysite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -151,12 +129,40 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-y=sczm)r@)2go_j+nq5=8v(v1z9t+sghin@+jnewqf7*@th=+n'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+#site framwork
+SITE_ID = 2
+
+
+# Database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -184,7 +190,7 @@ MULTI_CAPTCHA_ADMIN = {
 
 #summernote configs
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
+
 
 SUMMERNOTE_THEME = 'bs4' 
 SUMMERNOTE_CONFIG = {
@@ -236,4 +242,9 @@ SUMMERNOTE_CONFIG = {
 
    
 }
+
+
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
 

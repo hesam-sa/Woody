@@ -1,5 +1,5 @@
 asgiref
-beautifulsoup
+beautifulsoup4
 bleach
 Brotli
 calmjs.parse
@@ -17,8 +17,8 @@ django-simple-captcha
 django-summernote
 django-taggit
 html5lib
-jsmin1
-lxml0
+jsmin
+lxml
 pillow
 ply
 python-decouple

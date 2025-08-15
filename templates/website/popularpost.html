@@ -12,7 +12,7 @@
                     <div class="position-relative overflow-hidden">
                         <img class="img-fluid w-100" src={{post.image.url}} alt="">
                         <div class="portfolio-overlay">
-                            <a class="btn btn-square btn-outline-light mx-1" href={{post.image.url}}  data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-square btn-outline-light mx-1" href={{post.image.url}}  data-lightbox="portfolio"><i class="">{{post.counted_view}}views</i></a>
                             <a class="btn btn-square btn-outline-light mx-1" href="{% url 'blog:single' pid=post.id %}"><i class="fa fa-link"></i></a>
                             
                         </div>

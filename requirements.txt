@@ -1,5 +1,5 @@
 asgiref
-beautifulsoup
+beautifulsoup4>=4.12.0
 bleach
 Brotli
 calmjs.parse

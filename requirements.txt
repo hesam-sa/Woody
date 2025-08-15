@@ -17,7 +17,7 @@ django-simple-captcha
 django-summernote
 django-taggit
 html5lib
-jsmin1
+jsmin
 lxml0
 pillow
 ply
